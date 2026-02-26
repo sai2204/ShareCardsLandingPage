@@ -94,15 +94,10 @@ a{text-decoration:none;color:inherit;}
   letter-spacing:-.3px;
 }
 .logo-mark{
-  width:36px;height:36px;
-  background:transparent;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-  flex-shrink:0;
-  transition:transform .4s var(--ease-spring);
+  display:none;
 }
 .logo-mark:hover{transform:rotate(-6deg) scale(1.1);}
-.logo-mark img{width:100%;height:100%;object-fit:contain;display:block;}
+.logo-mark img{display:none;}
 .nav-pill{
   background:var(--ink);color:var(--bg);
   padding:9px 20px;border-radius:100px;
@@ -609,7 +604,7 @@ a{text-decoration:none;color:inherit;}
 @keyframes pinPulse{0%,100%{box-shadow:0 2px 8px rgba(15,14,13,.4),0 0 0 0 rgba(15,14,13,.2);}50%{box-shadow:0 2px 8px rgba(15,14,13,.4),0 0 0 8px rgba(15,14,13,0);}}
 .cta-form{
   display:flex;gap:0;
-  max-width:380px;margin:0 auto;
+  max-width:380px;margin:14px auto 0;
   border-radius:100px;
   border:1.5px solid var(--border2);
   background:var(--bg-card);
@@ -892,7 +887,7 @@ a{text-decoration:none;color:inherit;}
     <p class="hero-sub">Attach a note, tip, or insight to any place.<br>Share it with your friends — or the world.</p>
     <div class="hero-actions">
       <button class="btn-ink" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})">Join the waitlist</button>
-      <button class="btn-ghost" onclick="document.querySelector('#what').scrollIntoView({behavior:'smooth'})">See how it works ↓</button>
+      <button class="btn-ghost" onclick="document.querySelector('#how-it-works').scrollIntoView({behavior:'smooth'})">See how it works ↓</button>
     </div>
   </div>
 
@@ -980,7 +975,7 @@ a{text-decoration:none;color:inherit;}
 <div class="sep"></div>
 
 <!-- ═══════════ HOW IT WORKS ═══════════ -->
-<section class="section">
+<section class="section" id="how-it-works">
   <div class="r">
     <div class="sans-label" style="margin-bottom:14px;">How it works</div>
     <h2 class="display display-lg" style="margin-bottom:8px;">Three steps.<br><em>That's it.</em></h2>
@@ -1293,22 +1288,8 @@ a{text-decoration:none;color:inherit;}
     <p class="body-md" style="max-width:420px;margin:0 auto 36px;">Rolling out city by city. Join the list and we'll invite your circle together.</p>
   </div>
 
-  <!-- Email form -->
-  <div class="cta-form">
-    <input class="cta-input" type="email" placeholder="Your email address" id="ctaEmail"/>
-    <button class="cta-submit" onclick="handleJoin()">Join waitlist</button>
-  </div>
-  <p class="cta-note" id="ctaNote">No spam. Rolling out city by city.</p>
-
-  <!-- Divider -->
-  <div class="cta-divider">
-    <div class="cta-divider-line"></div>
-    <div class="cta-divider-text">or try it now</div>
-    <div class="cta-divider-line"></div>
-  </div>
-
   <!-- TestFlight CTA -->
-  <a class="tf-btn" href="https://testflight.apple.com/join/XXXXXXXX" target="_blank" rel="noopener">
+  <a class="tf-btn" href="https://testflight.apple.com/join/RcWmmwU7" target="_blank" rel="noopener">
     <div class="tf-icon">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
@@ -1321,6 +1302,23 @@ a{text-decoration:none;color:inherit;}
     <svg viewBox="0 0 16 16" style="width:14px;height:14px;fill:var(--faint);flex-shrink:0;"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
   <p style="font-size:11px;color:var(--faint);margin-top:10px;">iOS beta · Requires TestFlight app</p>
+
+  <!-- Divider -->
+  <div class="cta-divider">
+    <div class="cta-divider-line"></div>
+    <div class="cta-divider-text">
+      Sign in with Google? Enter your Gmail below.<br>
+      Or download directly via TestFlight above.
+    </div>
+    <div class="cta-divider-line"></div>
+  </div>
+
+  <!-- Email form -->
+  <div class="cta-form">
+    <input class="cta-input" type="email" placeholder="Your email address" id="ctaEmail"/>
+    <button class="cta-submit" onclick="handleJoin()">Join waitlist</button>
+  </div>
+  <p class="cta-note" id="ctaNote">No spam. Rolling out city by city.</p>
 </section>
 
 <!-- ═══════════ FOOTER ═══════════ -->
@@ -1600,19 +1598,46 @@ window.selectAudience = function(type) {
 })();
 
 /* ─── CTA email ─── */
-window.handleJoin = function() {
+window.handleJoin = async function() {
   const email = document.getElementById('ctaEmail').value.trim();
   const note = document.getElementById('ctaNote');
+  const form = document.querySelector('.cta-form');
+
   if (!email || !email.includes('@')) {
-    document.getElementById('ctaEmail').style.outline = '2px solid rgba(200,60,60,.4)';
-    setTimeout(() => document.getElementById('ctaEmail').style.outline = '', 1200);
+    const input = document.getElementById('ctaEmail');
+    input.style.outline = '2px solid rgba(200,60,60,.4)';
+    setTimeout(() => { input.style.outline = ''; }, 1200);
     return;
   }
-  note.textContent = '🎉 You\'re on the list! We\'ll invite your circle when we launch in your city.';
-  note.style.color = 'var(--ink)';
-  note.style.fontWeight = '600';
-  document.querySelector('.cta-form').style.opacity = '.5';
-  document.querySelector('.cta-form').style.pointerEvents = 'none';
+
+  // Optimistic UI while we submit to Google Apps Script
+  note.textContent = 'One sec… saving your email.';
+  note.style.color = 'var(--muted)';
+  note.style.fontWeight = '500';
+  form.style.opacity = '.5';
+  form.style.pointerEvents = 'none';
+
+  try {
+    const body = new URLSearchParams();
+    body.append('email', email);
+
+    const res = await fetch('https://script.google.com/macros/s/AKfycbzzx8gO19_jDMo4JZIiMT7xEZZ5uJlIZvrj_tXHCpsr2YY8rNv6bdwtOrF56wRM20Zn/exec', {
+      method: 'POST',
+      body
+    });
+
+    if (!res.ok) throw new Error('Failed to submit');
+
+    note.textContent = '🎉 You’re in! We’ll send your TestFlight invite soon — keep an eye on your inbox.';
+    note.style.color = 'var(--ink)';
+    note.style.fontWeight = '600';
+  } catch (err) {
+    note.textContent = 'Hmm, something went wrong. Please try again, or email support@sharecardsapp.com.';
+    note.style.color = 'rgba(200,60,60,1)';
+    note.style.fontWeight = '500';
+    form.style.opacity = '1';
+    form.style.pointerEvents = '';
+  }
 };
 
 /* ─── Typewriter for step 02 ─── */
